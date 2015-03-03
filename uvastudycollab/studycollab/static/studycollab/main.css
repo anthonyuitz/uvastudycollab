@@ -26,13 +26,15 @@
 }
 
 .jumbotron {
-  background-image:url('http://goo.gl/04j7Nn');
+  background-image:url('http://i.imgur.com/tOV5SsB.jpg');
   height: 500px;
-}
-
-.jumbotron .container {
-  position: relative;
-  top:100px;
+  margin-right: auto;
+  margin-left: auto;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .jumbotron h1 {
