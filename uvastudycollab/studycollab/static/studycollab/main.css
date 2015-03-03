@@ -26,8 +26,11 @@
 }
 
 .jumbotron {
-  background-image:url('http://goo.gl/04j7Nn');
+  background-image:url('http://i.imgur.com/tOV5SsB.jpg');
+  width: 1278px;
   height: 500px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .jumbotron .container {
