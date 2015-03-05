@@ -2,11 +2,10 @@
 <html>
 
   <head>
-    <link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
-    
-    <link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
-    
     {% load staticfiles %}
+    <link href="{% static 'studycollab/shift.css' %}" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{% static 'studycollab/bootstrap.css' %}">
 
    	<link rel = "stylesheet" type="text/css" href="{% static 'studycollab/main.css' %}" />
     
@@ -35,30 +34,30 @@
       </div>
     </div> 
 
-<div class="neighborhood-guides">
+<div class="study-guides">
     <div class="container">
         <h2>Study Guides</h2>
         <p>Not sure how to study? Students have created study guides for classes all around grounds.</p>
         <div class="row">
             <div class="col-md-4">
                 <div class="thumbnail">
-                    <img src="http://i.imgur.com/kfCMpNW.jpg">
+                    <img src="{% static 'studycollab/images/enwr.jpg' %}">
                 </div>
                 <div class="thumbnail">
-                    <img src="http://i.imgur.com/dPkc4ME.jpg">
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="thumbnail">
-                    <img src="http://i.imgur.com/h2ZYA5X.png">
-                </div>
-                <div class="thumbnail">
-                    <img src="http://i.imgur.com/O3yi3Bj.jpg">
+                    <img src="{% static 'studycollab/images/cs.jpg' %}">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="thumbnail">
-                    <img src="http://i.imgur.com/AoZCH5F.jpg">
+                    <img src="{% static 'studycollab/images/psyc.png' %}">
+                </div>
+                <div class="thumbnail">
+                    <img src="{% static 'studycollab/images/math.jpg' %}">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <img src="{% static 'studycollab/images/logo_large.jpg' %}">
                 </div>
             </div>
         </div>
