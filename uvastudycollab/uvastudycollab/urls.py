@@ -8,4 +8,5 @@ urlpatterns = patterns('',
    url(r'^register/$', views.register, name='register'),
    url(r'^admin/', include(admin.site.urls)),
    url(r'^findGroup/$', views.findGroup, name = 'findGroup'),
+   url(r'^login/$', views.login, name = 'login'),
    )

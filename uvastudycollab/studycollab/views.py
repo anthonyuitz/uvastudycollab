@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from studycollab.forms import UserForm, groupForm
+from studycollab.forms import UserForm, groupForm, loginForm
 from studycollab.models import group
+from django.contrib.auth import authenticate, login as auth_login
 import json
 
 def register(request):
@@ -48,4 +49,30 @@ def findGroup(request):
 		findGroupForm = groupForm()
 		associatedGroups = []
 		return render(request,'findGroup.html', {'findGroupForm' : findGroupForm, 'associatedGroups' : associatedGroups})
+
+def login(request):
+	if request.method == 'POST':
+		form = loginForm(request.POST)
+
+		if form.is_valid():
+			username = form.cleaned_data['username']
+			password = form.cleaned_data['password']
+
+			user = authenticate(username = username, password = password)
+
+			if user is not None:
+				if user.is_active:
+					auth_login(request, user)
+					return render(request, 'index.html', {'username' : username})
+			else:
+				return HttpResponse("Please enter a valid username or password")
+		else:
+			return HttpResponse("Please enter a username and a password")
+	else:
+		form = loginForm()
+		return render(request, 'login.html', {'form' : form })
+
+
+
+
 

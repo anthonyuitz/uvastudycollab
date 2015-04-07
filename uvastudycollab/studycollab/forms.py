@@ -10,3 +10,7 @@ class UserForm(forms.ModelForm):
 
 class groupForm(forms.Form):
 	className = forms.CharField(max_length = 100, label = 'Class Name')
+
+class loginForm(forms.Form):
+	username = forms.CharField(max_length = 100, label = 'Username')
+	password = forms.CharField(widget = forms.PasswordInput())
