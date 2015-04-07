@@ -7,4 +7,5 @@ urlpatterns = patterns('',
    url('^$', TemplateView.as_view(template_name='index.html'), name='index'),
    url(r'^register/$', views.register, name='register'),
    url(r'^admin/', include(admin.site.urls)),
+   url(r'^findGroup/$', views.findGroup, name = 'findGroup'),
    )

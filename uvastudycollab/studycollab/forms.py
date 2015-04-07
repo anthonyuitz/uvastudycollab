@@ -1,4 +1,3 @@
-
 from django import forms
 from django.contrib.auth.models import User
 
@@ -9,3 +8,5 @@ class UserForm(forms.ModelForm):
 		model = User
 		fields = ('username', 'email', 'password')
 
+class groupForm(forms.Form):
+	className = forms.CharField(max_length = 100, label = 'Class Name')

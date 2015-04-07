@@ -1,10 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title> Find Group </title>
+	<title> 
+		Find Group 
+	</title>
 </head>
 
 <body>
-</body>
+	<form id="findGroupForm" method="post" action="/findGroup/">
+		{% csrf_token %}
+		{{ findGroupForm }}
+		<br>
+		<br>
+	<input type="submit" name="submit" value="Find Groups!" />
 
+	{% if associatedGroups %}
+		<br> <br>
+		<table>
+		{% for group in associatedGroups %}
+		    <tr>
+		    <td>
+		    <a href=''> {{ group }} </a>
+		    </td>
+		    </tr>
+		{% endfor %}
+		</table>
+	{% endif %}
+</body>
 </html>
