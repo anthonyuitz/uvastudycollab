@@ -61,14 +61,13 @@ def login(request):
 
 			user = authenticate(username = username, password = password)
 
-			if user is not None:
-				if user.is_active:
-					auth_login(request, user)
-					return render(request, 'index.html', {'username' : username})
+			if user is not None and user.is_active:
+				auth_login(request, user)
+				return render(request, 'index.html', {'username' : username})
 			else:
-				return render(request, 'login.html', {'error' : 'Your username and password do not match. Please try again.', 'form' : form})
+				return render(request, 'login.html', {'error' : 'Your username and password do not match, or your account is disabled. Please try again.', 'form' : form})
 		else:
-			return render(request, 'login.html', {'form' : form })
+			return render(request, 'login.html', {'error' : 'The login could not be processed. Please check the errors below.','form' : form })
 	else:
 		form = loginForm()
 		return render(request, 'login.html', {'form' : form })

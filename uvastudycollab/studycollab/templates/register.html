@@ -8,6 +8,7 @@
 	<strong> Thank you for registering!</strong>
 	<a href="/">Return to the homepage.</a><br />
 	{% else %}
+	<p>Please fill in all the fields and press "Register" to process your registration.</p>
 	<form id="user_form" method="post" action="/register/" enctype="multipart/form-data">
 		{% csrf_token %}
 		{{ user_form.as_p }}

@@ -22,6 +22,9 @@
 			<li><a href="/register/">Sign Up</a></li>
 			<li><a href="/login/">Log In</a></li>
 			 {% endif %}
+			 {% if user.is_staff %}
+			<li><a href="/admin/">AdminCP</a></li>
+			 {% endif %}
 			<li><a href="/help/">Help</a></li>
 		</ul>
 	</div>
@@ -45,7 +48,7 @@
 					Want to get in touch?
 				</p>
 				<p>
-				<a href="http://www.google.com/recaptcha/mailhide/d?k=015-ARJ9CbeHhTq6azmkTCbA==&amp;c=Q5-x2njJpO07STBqB6HZzsSP-YqWHpUmcMy5InSSv3k=" onclick="window.open('http://www.google.com/recaptcha/mailhide/d?k\075015-ARJ9CbeHhTq6azmkTCbA\75\75\46c\75Q5-x2njJpO07STBqB6HZzsSP-YqWHpUmcMy5InSSv3k\075', '', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=500,height=300'); return false;" title="Reveal the contact information">Click here now!</a>
+				<a href="http://www.google.com/recaptcha/mailhide/d?k=015-ARJ9CbeHhTq6azmkTCbA==&amp;c=Q5-x2njJpO07STBqB6HZzsSP-YqWHpUmcMy5InSSv3k=" onclick="window.open('http://www.google.com/recaptcha/mailhide/d?k\075015-ARJ9CbeHhTq6azmkTCbA\75\75\46c\75Q5-x2njJpO07STBqB6HZzsSP-YqWHpUmcMy5InSSv3k\075', '', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=500,height=300'); return false;" title="Reveal contact information">Click here now!</a>
 				</p>
 			</div>
 		</div>
