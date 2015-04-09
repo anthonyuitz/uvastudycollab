@@ -10,6 +10,18 @@
   display: inline;
 }
 
+li.active {
+  background-color: #D3D3D3;
+  padding:14px 0 23px 0px;
+}
+
+.header {
+  background-color: #D3D3D3;
+  color: #393c3d;
+  font-size: 24px;
+  padding:13px 0 13px 120px;
+}
+
 .study-guides {
     background-color: #efefef;
     border-bottom:1px solid #dbdbdb;
@@ -61,4 +73,21 @@
 
 .learn-more a {
   color: #00b0ff;
+}
+
+.body-default {
+    background-color: #efefef;
+    padding-bottom:13px;
+    padding-top:13px;
+    border-bottom:1px solid #dbdbdb;
+}
+
+.body-default h2 {
+    color:#393c3d;
+    font-size:24px;
+}
+
+.body-default p {
+    font-size:15px;
+    margin-bottom:13px;
 }

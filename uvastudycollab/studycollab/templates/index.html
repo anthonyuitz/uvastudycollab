@@ -1,94 +1,45 @@
-<!DOCTYPE html>
-<html>
-
-  <head>
-    {% load staticfiles %}
-    <link href="{% static 'studycollab/shift.css' %}" rel="stylesheet">
-    
-    <link rel="stylesheet" href="{% static 'studycollab/bootstrap.css' %}">
-
-   	<link rel = "stylesheet" type="text/css" href="{% static 'studycollab/main.css' %}" />
-    
-  </head>
-
-  <body>
-    <div class="nav">
-      <div class="container">
-        <ul class="pull-left">
-          {% if username %}
-            <li><a href="#">{{username}}</a></li>
-          {% else %}
-            <li><a href="#">Name</a></li>
-          {% endif %}
-
-          <li><a href="#">Browse</a></li>
-        </ul>
-        <ul class="pull-right">
-          <li><a href="/register/">Sign Up</a></li>
-          {% if username %}
-          <li><a href="#">Log Out</a></li>
-          {% else %}
-          <li><a href="/login/">Log In</a></li>
-          {% endif %}
-          <li><a href="#">Help</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="jumbotron">
-      <div class="container">
-        <h1>Find a group to study with.</h1>
-        <p>Look within the entire UVA community!</p>
-        <a href="/findGroup/">Start Now</a>
-      </div>
-    </div> 
-
-<div class="study-guides">
-    <div class="container">
-        <h2>Study Guides</h2>
-        <p>Not sure how to study? Students have created study guides for classes all around grounds.</p>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="thumbnail">
-                    <img src="{% static 'studycollab/images/enwr.jpg' %}">
-                </div>
-                <div class="thumbnail">
-                    <img src="{% static 'studycollab/images/cs.jpg' %}">
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="thumbnail">
-                    <img src="{% static 'studycollab/images/psyc.png' %}">
-                </div>
-                <div class="thumbnail">
-                    <img src="{% static 'studycollab/images/math.jpg' %}">
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="thumbnail">
-                    <img src="{% static 'studycollab/images/logo_large.jpg' %}">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-    <div class="learn-more">
-	  <div class="container">
-		<div class="row">
-	      <div class="col-md-6">
-			<h3>Post a guide</h3>
-			<p>Posting a study guide will help other students pass their exams.</p>
-			<p><a href="#">Learn more posting study guides!</a></p>
-		  </div>
-		  <div class="col-md-6">
-			<h3>Contact us</h3>
-			<p>Want to get in touch?</p>
-			<p><a href="#">Click here now!
-			</a></p>
-		  </div>
-	    </div>
-	  </div>
+{% extends 'template.html' %}
+{% load staticfiles %}
+{% block title %}Home{% endblock %} 
+{% block body_block %}
+<div class="jumbotron">
+	<div class="container">
+		<h1>Find a group to study with.</h1>
+		<p>
+			Look within the entire UVA community!
+		</p>
+		<a href="/findGroup/">Start Now</a>
 	</div>
-  </body>
-</html>
+</div>
+<div class="study-guides">
+	<div class="container">
+		<h2>Study Guides</h2>
+		<p>
+			Not sure how to study? Students have created study guides for classes all around grounds.
+		</p>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="thumbnail">
+					<img src="{% static 'studycollab/images/enwr.jpg' %}">
+				</div>
+				<div class="thumbnail">
+					<img src="{% static 'studycollab/images/cs.jpg' %}">
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="thumbnail">
+					<img src="{% static 'studycollab/images/psyc.png' %}">
+				</div>
+				<div class="thumbnail">
+					<img src="{% static 'studycollab/images/math.jpg' %}">
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="thumbnail">
+					<img src="{% static 'studycollab/images/logo_large.jpg' %}">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

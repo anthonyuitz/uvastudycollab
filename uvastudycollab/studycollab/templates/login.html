@@ -1,12 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Login</title>
-<body>
+{% extends 'template.html' %}
+{% block title %}Login{% endblock %} 
+{% block body_block %}
+<div class="header">Login</div>
+<div class="body-default">
+	<div class="container">
+	<p>Please enter your username and password</p>
 	<form method = 'POST' action = '/login/'>
 		{% csrf_token %}
-		{{ form.as_p }}
-		<input type = 'submit' value = 'Login!'>
+		{{form.as_p}}
+	<input type = 'submit' value = 'Login!'>
 	</form>
-</body>
-</head>
+	</div>
+</div>
+{% endblock %}
