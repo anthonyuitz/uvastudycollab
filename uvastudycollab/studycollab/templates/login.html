@@ -4,6 +4,9 @@
 <div class="header">Login</div>
 <div class="body-default">
 	<div class="container">
+	{% if error %}
+	<p class="error"> {{ error }}</p>
+	{% endif %}
 	<p>Please enter your username and password</p>
 	<form method = 'POST' action = '/login/'>
 		{% csrf_token %}

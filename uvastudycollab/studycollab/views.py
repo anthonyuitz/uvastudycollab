@@ -38,13 +38,14 @@ def findGroup(request):
 
 			groups = group.objects.all()
 			for someGroup in groups:
-				if someGroup.className == className:
+				if someGroup.className.lower() == className.lower():
 					groupJson = json.loads(someGroup.groups)
-					associatedGroups = groupJson[className]
+					associatedGroups = groupJson[someGroup.className]
 					return render(request,'findGroup.html', {'findGroupForm' : findGroupForm, 'associatedGroups' : associatedGroups})
-			else:
-				return HttpResponse("No one has created a group for your class") 
-
+			return render(request, 'findGroup.html', {'error' : 'No one has created a group for this class.', 'findGroupForm' : findGroupForm});
+		
+		else:
+			return render(request,'findGroup.html', {'findGroupForm' : findGroupForm})
 	else:
 		findGroupForm = groupForm()
 		associatedGroups = []
@@ -65,9 +66,9 @@ def login(request):
 					auth_login(request, user)
 					return render(request, 'index.html', {'username' : username})
 			else:
-				return HttpResponse("Please enter a valid username or password")
+				return render(request, 'login.html', {'error' : 'Your username and password do not match. Please try again.', 'form' : form})
 		else:
-			return HttpResponse("Please enter a username and a password")
+			return render(request, 'login.html', {'form' : form })
 	else:
 		form = loginForm()
 		return render(request, 'login.html', {'form' : form })

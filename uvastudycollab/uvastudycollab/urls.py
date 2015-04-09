@@ -9,4 +9,6 @@ urlpatterns = patterns('',
    url(r'^admin/', include(admin.site.urls)),
    url(r'^findGroup/$', views.findGroup, name = 'findGroup'),
    url(r'^login/$', views.login, name = 'login'),
+   url(r'^help/$', TemplateView.as_view(template_name='help.html'), name = 'help'),
+   url(r'^logout/$', 'django.contrib.auth.views.logout',{'next_page': 'index'}),
    )

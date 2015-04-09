@@ -4,6 +4,11 @@
 <div class="header">Find Group</div>
 <div class="body-default">
 	<div class="container">
+		{% if error %}
+		<p class="error"> {{ error }}</p>
+		{% endif %}
+		<p>Input a course ID to find a group.</p>
+		<p><strong>Example:</strong> CS4653</p>
 		<form id="findGroupForm" method="post" action="/findGroup/">
 			{% csrf_token %}
 			{{ findGroupForm }}

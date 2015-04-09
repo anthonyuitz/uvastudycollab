@@ -12,23 +12,17 @@
 	<div class="container">
 		<ul class="pull-left">
 			<li><a href="/">Home</a></li>
-			 {% if username %}
-			<li><a href="#">{{username}}</a></li>
-			 {% else %}
-			<li><a href="#">Name</a></li>
-			 {% endif %}
-			<li><a href="#">Browse</a></li>
+			<li><a href="/findGroup/">Browse</a></li>
 		</ul>
 		<ul class="pull-right">
-			 {% if not username %}
-			<li><a href="/register/">Sign Up</a></li>
-			 {% endif %}
-			 {% if username %}
-			<li><a href="#">Log Out</a></li>
+			 {% if user.is_authenticated %}
+			<li><a href="#">{{ user.username }}</a></li>
+			<li><a href="/logout/">Log Out</a></li>			
 			 {% else %}
+			<li><a href="/register/">Sign Up</a></li>
 			<li><a href="/login/">Log In</a></li>
 			 {% endif %}
-			<li><a href="#">Help</a></li>
+			<li><a href="/help/">Help</a></li>
 		</ul>
 	</div>
 </div>
@@ -42,7 +36,7 @@
 					Posting a study guide will help other students pass their exams.
 				</p>
 				<p>
-					<a href="#">Learn more posting study guides!</a>
+					<a href="/help/">Learn more posting study guides!</a>
 				</p>
 			</div>
 			<div class="col-md-6">
@@ -51,7 +45,7 @@
 					Want to get in touch?
 				</p>
 				<p>
-					<a href="#">Click here now!</a>
+				<a href="http://www.google.com/recaptcha/mailhide/d?k=015-ARJ9CbeHhTq6azmkTCbA==&amp;c=Q5-x2njJpO07STBqB6HZzsSP-YqWHpUmcMy5InSSv3k=" onclick="window.open('http://www.google.com/recaptcha/mailhide/d?k\075015-ARJ9CbeHhTq6azmkTCbA\75\75\46c\75Q5-x2njJpO07STBqB6HZzsSP-YqWHpUmcMy5InSSv3k\075', '', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=500,height=300'); return false;" title="Reveal the contact information">Click here now!</a>
 				</p>
 			</div>
 		</div>
