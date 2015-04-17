@@ -13,6 +13,21 @@ p.error {
   display: inline;
 }
 
+.nav {
+  background-color: #f7f7f7;
+}
+
+.nav #logo {
+  background-image:url('images/logo_small.png');
+  background-repeat: no-repeat;
+  overflow:hidden;
+  display:block;
+  height:45px;
+  width:64px;
+  float: left !important;
+  text-indent: 200%;
+}
+
 li.active {
   background-color: #D3D3D3;
   padding:14px 0 23px 0px;
