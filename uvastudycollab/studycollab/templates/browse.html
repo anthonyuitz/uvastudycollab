@@ -1,0 +1,54 @@
+{% extends 'template.html' %}
+{% block title %}Find Information by Class{% endblock %} 
+{% block body_block %}
+<div class="header">Find Information by Class</div>
+<div class="body-default">
+	<div class="container">
+		{% if error %}
+		<p class="error"> {{ error }}</p>
+		{% endif %}
+		<p>Input a course ID to find a group or a study guide.</p>
+		<p>Example: CS4753</p>
+		<form id="infoByClassForm" method="post" action="/browse/">
+			{% csrf_token %}
+			{{ infoByClassForm }}
+			<br/>
+			<br/>
+			<input type="submit" name="submit" value="Find Information!" />
+		</form>
+		{% if associatedGroups %}
+		<br/><br/>
+		<h2>Study groups for requested course ID: </h2>
+		<table>
+		{% for group in associatedGroups %}
+		   	<tr>
+		   		<td>
+		   			<a href='/displayGroup/{{group.groupid}}'> {{ group }} </a>
+		   		</td>
+		   	</tr>
+		{% endfor %}
+		</table>
+		{% endif %}
+		<br />
+		{% if documents %}
+		<h2>Documents for requested course ID: </h2>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+			{% for doc in documents %}
+				<tr>
+					<td><a href='/media/{{doc.document}}'>{{ doc.name }}</a></td>
+					<td>{{ doc.description }}</td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+		{% endif %}
+	</div>
+</div>
+{% endblock %}

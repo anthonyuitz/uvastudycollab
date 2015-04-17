@@ -12,7 +12,11 @@
 	<div class="container">
 		<ul class="pull-left">
 			<li><a href="/">Home</a></li>
-			<li><a href="/findGroup/">Browse</a></li>
+			<li><a href="/browse/">Browse</a></li>
+			{% if user.is_authenticated %}
+			<li><a href="/addGroup/">Add Group</a></li>
+			<li><a href="/addDocument/">Upload Document</a></li>
+			{% endif %}			
 		</ul>
 		<ul class="pull-right">
 			 {% if user.is_authenticated %}

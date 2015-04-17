@@ -1,0 +1,28 @@
+{% extends 'template.html' %}
+{% block title %}Add Document{% endblock %} 
+{% block body_block %}
+<div class="header">Add Document</div>
+<div class="body-default">
+	<div class="container">
+	{% if added %}
+	<strong>Thank you for adding class documents!</strong>
+	<a href="/">Return to the homepage.</a><br />
+	{% else %}
+	<p>Please use this form to upload class notes, study guides, and other helpful documents.</p>
+	<form id="addDocumentForm" method="post" action="/addDocument/" enctype="multipart/form-data">
+	<fieldset>
+		{% csrf_token %}
+		{% for field in addDocumentForm %}
+		<div class="form-group">
+			{{ field.errors }}
+			<label class="col-md-2 control-label" for="textinput" align="center">{{ field.label }}:</label>
+			{{ field }}
+		</div>
+		{% endfor %}
+		<input type="submit" name="submit" value="Add Document" />
+	</fieldset>
+	</form>
+	{% endif %}
+	</div>
+</div>
+{% endblock %}

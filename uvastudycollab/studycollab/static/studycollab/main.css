@@ -94,3 +94,7 @@ li.active {
     font-size:15px;
     margin-bottom:13px;
 }
+
+.start-now a {
+  color: #FFFFFF;
+}

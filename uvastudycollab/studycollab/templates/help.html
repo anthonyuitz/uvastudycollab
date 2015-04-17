@@ -4,7 +4,16 @@
 <div class="header">Help</div>
 <div class="body-default">
 	<div class="container">
-	<p class="error">The help section is under construction.</p>
+	{% for c in category %}
+		<h4>{{ c }}</h4>
+		{% for q in question %}
+		{% if q.category == c  %} 
+			<strong>{{ q }}</strong><br />
+			{{ q.answer }}
+			<br /><br />
+		{% endif %}
+		{% endfor %}	
+	{% endfor %}
 	</div>
 </div>
 {% endblock %}

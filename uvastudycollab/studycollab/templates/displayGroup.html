@@ -4,7 +4,22 @@
 <div class="header">Group Information</div>
 <div class="body-default">
 	<div class="container">
-		<p class="error">The group information page is under construction.</p>
+		<h2>{{ studygroup.name }}</h2>
+		<br />
+		<p>
+		<strong>Owner: </strong>
+		    {{ studygroup.owner }}	
+		</p>
+				<p>
+		<strong>Classes: </strong>
+		{% for class in studygroup.course.all %}
+		    {{ class }}	
+		{% endfor %}
+		</p>
+		<p>
+		<strong>Description: </strong>
+		{{ studygroup.description }}
+		</p>
 	</div>
 </div>
 {% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'template.html' %}
+{% block title %}Add Group{% endblock %} 
+{% block body_block %}
+<div class="header">Add Group</div>
+<div class="body-default">
+	<div class="container">
+	{% if added %}
+	<strong>Thank you for adding your study group!</strong>
+	<a href="/">Return to the homepage.</a><br />
+	{% else %}
+	<p>Please fill in all the fields and press "Add Group" to process your request to add a study group.</p>
+	<form id="addGroupForm" method="post" action="/addGroup/" enctype="multipart/form-data">
+	<fieldset>
+		{% csrf_token %}
+		{% for field in addGroupForm %}
+		<div class="form-group">
+			{{ field.errors }}
+			<label class="col-md-2 control-label" for="textinput" align="center">{{ field.label }}:</label>
+			{{ field }}
+		</div>
+		{% endfor %}
+		<input type="submit" name="submit" value="Add Group" />
+	</fieldset>
+	</form>
+	{% endif %}
+	</div>
+</div>
+{% endblock %}
