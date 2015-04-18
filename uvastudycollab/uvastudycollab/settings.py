@@ -87,6 +87,8 @@ TEMPLATE_DIRS = (
   '/templates',
 )
 
+MEDIA_ROOT = os.path.dirname(os.path.dirname(__file__)) + '\..\\'
+
 MEDIA_URL = '/media/'
 
 
