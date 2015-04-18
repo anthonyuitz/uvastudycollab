@@ -8,9 +8,9 @@
 		<h4>{{ c }}</h4>
 		{% for q in question %}
 		{% if q.category == c  %} 
-			<strong>{{ q }}</strong><br />
-			{{ q.answer }}
-			<br /><br />
+			<div class="question">{{ q }}</div>
+			<div class="answer">{{ q.answer }}</div>
+			<br />
 		{% endif %}
 		{% endfor %}	
 	{% endfor %}

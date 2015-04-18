@@ -41,7 +41,7 @@ class studygroup(models.Model):
 				super(studygroup, self).save(*args, **kwargs)
 			except IntegrityError:
 				#try another random value
-				randomid.update(name + random.randrange(100, 200000000))
+				randomid.update((self.name + str(random.randrange(100, 200000000))).encode('utf-8'))
 				self.groupid = randomid.hexdigest()[5:25]
 			else:
 				success = True

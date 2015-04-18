@@ -1,16 +1,26 @@
+html {
+  overflow-y: scroll;
+}
+
 p.error {
   color: red;
 }
 .nav a {
   color: #5a5a5a;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: bold;
   padding: 14px 10px;
   text-transform: uppercase;
+  text-decoration:none;
 }
 
 .nav li {
   display: inline;
+}
+
+.nav li:hover {
+  background-color: #D3D3D3;
+  padding:14px 0 14px 0px;
 }
 
 .nav {
@@ -28,7 +38,7 @@ p.error {
   text-indent: 200%;
 }
 
-li.active {
+.nav li.active {
   background-color: #D3D3D3;
   padding:14px 0 23px 0px;
 }
@@ -112,4 +122,12 @@ li.active {
 
 .start-now a {
   color: #FFFFFF;
+}
+
+.question {
+  font-weight: bold;
+}
+
+.answer {
+  
 }

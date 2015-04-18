@@ -11,13 +11,11 @@
 		<p>Example: CS4753</p>
 		<form id="infoByClassForm" method="post" action="/browse/">
 			{% csrf_token %}
-			{{ infoByClassForm }}
-			<br/>
-			<br/>
-			<input type="submit" name="submit" value="Find Information!" />
+			{{ infoByClassForm.as_p }}
+			<button type= "submit" class="btn btn-default">Find Information</button>
 		</form>
 		{% if associatedGroups %}
-		<br/><br/>
+		<br/>
 		<h2>Study groups for requested course ID: </h2>
 		<table>
 		{% for group in associatedGroups %}

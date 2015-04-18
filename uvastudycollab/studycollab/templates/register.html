@@ -8,11 +8,14 @@
 	<strong> Thank you for registering!</strong>
 	<a href="/">Return to the homepage.</a><br />
 	{% else %}
-	<p>Please fill in all the fields and press "Register" to process your registration.</p>
+		{% if error %}
+		<p class="error"> {{ error }}</p>
+		{% endif %}
+	<p>Please fill in all the fields and press "Register" to process your registration. A valid virginia.edu email is required to register.</p>
 	<form id="user_form" method="post" action="/register/" enctype="multipart/form-data">
 		{% csrf_token %}
 		{{ user_form.as_p }}
-		<input type="submit" name="submit" value="Register" />
+		<button type= "submit" class="btn btn-default">Register</button>
 	</form>
 	{% endif %}
 	</div>

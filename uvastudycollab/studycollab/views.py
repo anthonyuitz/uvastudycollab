@@ -1,8 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect, resolve_url
 from django.http import HttpResponse
 from studycollab.forms import *
 from studycollab.models import studygroup, document, course, help_category, help_question
 from django.contrib.auth import authenticate, login as auth_login
+from django.utils.http import is_safe_url
 import json
 import re
 
@@ -14,8 +15,9 @@ def register(request):
 		user_form = UserForm(data=request.POST)
 
 		if user_form.is_valid():
+			if user_form.cleaned_data['email'].split('@')[-1] != 'virginia.edu':
+				return render(request, 'register.html', {'user_form': user_form, 'error': 'Please register with a valid virginia.edu email.', registered: registered})
 			user = user_form.save()
-
 			user.set_password(user.password)
 			user.save()
 
@@ -64,24 +66,34 @@ def login(request):
 
 			if user is not None and user.is_active:
 				auth_login(request, user)
-				return render(request, 'index.html', {'username' : username})
+				nextURL = form.cleaned_data['nextURL']
+				if not is_safe_url(url=nextURL, host=request.get_host()):
+					nextURL = resolve_url('/')
+				return redirect(nextURL)
 			else:
 				return render(request, 'login.html', {'error' : 'Your username and password do not match, or your account is disabled. Please try again.', 'form' : form})
 		else:
 			return render(request, 'login.html', {'error' : 'The login could not be processed. Please check the errors below.','form' : form })
 	else:
-		form = loginForm()
-		return render(request, 'login.html', {'form' : form })
+		nextURL = request.GET.get('next', '/').strip()
+		data = {'nextURL': nextURL}
+		form = loginForm(initial = data)
+		if request.GET.get('auth') == 'require':
+			return render(request, 'login.html', {'error' : 'Please log in to use this feature.', 'form' : form})
+		if request.GET.get('auth') == 'validate':
+			return render(request, 'login.html', {'error' : 'To protect the privacy and safety of our users, a valid login is required to view this information.', 'form' : form})
+		return render(request, 'login.html', {'form' : form})
 
 def displayGroup(request, groupvalue):
+	if not request.user.is_authenticated():
+		return redirect('/login?auth=validate&next=%s' % (request.path))
 	group = get_object_or_404(studygroup, groupid=groupvalue)
 	return render(request, 'displayGroup.html', {'studygroup': group})
 
 def addGroup(request):
 	added = False
 	if not request.user.is_authenticated():
-		form = loginForm()
-		return render(request, 'login.html', {'error' : 'Please login to use this feature.', 'form' : form})
+		return redirect('/login?auth=require&next=%s' % (request.path))
 	if request.method == 'POST':
 		form = addGroupForm(request.POST)
 		if form.is_valid():
@@ -99,8 +111,7 @@ def addGroup(request):
 def addDocument(request):
 	added = False
 	if not request.user.is_authenticated():
-		form = loginForm()
-		return render(request, 'login.html', {'error' : 'Please login to use this feature.', 'form' : form})
+		return redirect('/login?auth=require&next=%s' % (request.path))
 	if request.method == 'POST':
 		form = addDocumentForm(request.POST, request.FILES)
 		if form.is_valid():
