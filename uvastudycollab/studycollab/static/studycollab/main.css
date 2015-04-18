@@ -47,7 +47,7 @@ p.error {
   background-color: #D3D3D3;
   color: #393c3d;
   font-size: 24px;
-  padding:13px 0 13px 120px;
+  padding:13px 0 13px 0;
 }
 
 .study-guides {
